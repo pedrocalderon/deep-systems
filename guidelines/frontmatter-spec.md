@@ -1,7 +1,7 @@
 ---
 id: frontmatter-spec
 created: 2026-02-20
-updated: 2026-02-22T15:55:42-03:00
+updated: 2026-02-25T11:13:47-03:00
 type: guideline
 curriculum:
 block:
@@ -22,7 +22,7 @@ All markdown files must begin with:
 id: file-id-here
 created: 2026-02-20T08:55:51-03:00
 updated: 2026-02-20T08:55:51-03:00
-type: note # note | overview | exercise | experiment | essay | reflection | design-note
+type: note # note | overview | exercise | experiment | essay | reflection | design-note | session
 curriculum: 01-tools-engineering # optional, not present in the thinking notes
 block: 01-systems-architecture # optional, not present in the thinking notes
 book: csapp # optional
