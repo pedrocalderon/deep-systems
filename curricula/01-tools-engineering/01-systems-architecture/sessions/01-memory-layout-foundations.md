@@ -1,7 +1,7 @@
 ---
 id: systems-architecture-session-1
 created: 2026-02-25T00:00:00-03:00
-updated: 2026-02-25T11:25:28-03:00
+updated: 2026-03-10T15:04:23-03:00
 type: session
 curriculum: 01-tools-engineering
 block: 01-systems-architecture
@@ -68,6 +68,11 @@ Você deve conseguir responder:
   — Book oficial
 
 ## Exercícios
+
+### 0. Use pmap and free command with rust program bellow
+
+Criar o programa exercício de OSTEP ch 13 em Rust e monitorar com os comando
+de memória.
 
 ### 1. Exploração no terminal
 
