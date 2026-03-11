@@ -1,7 +1,7 @@
 ---
 id: systems-architecture-session-1
 created: 2026-02-25T00:00:00-03:00
-updated: 2026-03-10T15:04:23-03:00
+updated: 2026-03-11T10:04:54-03:00
 type: session
 curriculum: 01-tools-engineering
 block: 01-systems-architecture
@@ -17,6 +17,7 @@ tags:
   - session
 aliases:
   - systems-architecture-session-1
+completed: true
 aigenerated: true
 ---
 
@@ -74,9 +75,9 @@ Você deve conseguir responder:
 Criar o programa exercício de OSTEP ch 13 em Rust e monitorar com os comando
 de memória.
 
-### 1. Exploração no terminal
+Feito
 
-Execute os comandos abaixo em um programa Rust simples compilado:
+### 1. Exploração no terminal
 
 ```bash
 # Compile um programa Rust com debug symbols
