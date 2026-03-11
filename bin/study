@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+load_config() {
+	local config_home="${XDG_CONFIG_HOME:-$HOME/.config}"
+	local config_file="$config_home/deep-systems/config"
+
+	if [[ -f "$config_file" ]]; then
+		# shellcheck source=/dev/null
+		source "$config_file"
+	fi
+}
+
+load_config
+
+if [[ -z "${DEEP_SYSTEMS_DIR:-}" ]]; then
+	echo "error: DEEP_SYSTEMS_DIR is not set."
+	echo "Run 'make install' from the deep-systems project or set it manually."
+	exit 1
+fi
+
+if [[ ! -d "$DEEP_SYSTEMS_DIR" ]]; then
+	echo "error: DEEP_SYSTEMS_DIR=$DEEP_SYSTEMS_DIR does not exist."
+	exit 1
+fi
+
+usage() {
+	echo "Usage: study <command>"
+	echo ""
+	echo "Commands:"
+	echo "  session    Open the last unfinished study session in neovim"
+}
+
+cmd_session() {
+	local last_session=""
+
+	while IFS= read -r file; do
+		if ! grep -q "^completed: true" "$file" 2>/dev/null; then
+			last_session="$file"
+		fi
+	done < <(find "$DEEP_SYSTEMS_DIR/curricula" -path "*/sessions/*.md" -type f | sort)
+
+	if [[ -z "$last_session" ]]; then
+		echo "No unfinished study sessions found."
+		exit 1
+	fi
+
+	echo "Opening: ${last_session#"$DEEP_SYSTEMS_DIR/"}"
+	cd "$DEEP_SYSTEMS_DIR"
+	exec nvim "$last_session"
+}
+
+case "${1:-}" in
+	session) cmd_session ;;
+	-h|--help) usage ;;
+	"") usage; exit 1 ;;
+	*) echo "error: unknown command '$1'"; echo ""; usage; exit 1 ;;
+esac
